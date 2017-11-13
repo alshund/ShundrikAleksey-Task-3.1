@@ -25,7 +25,7 @@ public class SQLUserDAOImpl implements UserDAO {
             resultSet = preparedStatement.executeQuery();
             return getUsers();
         } catch (SQLException e) {
-            throw new DAOSearchException(e);
+            throw new DAOSearchException(UtilityData.DAO_EXCEPTION_MESSAGE, e);
         } finally {
             closeAll();
         }

@@ -5,6 +5,7 @@ import by.tr.web.dao.UserDAO;
 import by.tr.web.dao.exception.DAOSearchException;
 import by.tr.web.domain.User;
 import by.tr.web.service.UserService;
+import by.tr.web.service.UtilityData;
 import by.tr.web.service.exception.ServiceSearchException;
 import by.tr.web.service.validator.NameSurnameValidatorImpl;
 import by.tr.web.service.validator.Validator;
@@ -30,7 +31,7 @@ public class UserServiceImpl implements UserService {
                 List<User> users = userDAO.nameSurnameSearch(name, surname);
                 return users;
             } catch (DAOSearchException | SQLException e) {
-                throw new ServiceSearchException(e);
+                throw new ServiceSearchException(UtilityData.SERVICE_SEARCH_EXCEPTION_MESSAGE, e);
             }
         } else {
             return null;
