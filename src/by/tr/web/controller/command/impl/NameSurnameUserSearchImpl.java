@@ -24,7 +24,7 @@ public class NameSurnameUserSearchImpl implements Command {
 
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServiceSearchException, ServletException, IOException {
-        String name = req.getParameter(UtilityData.FormAttributes.name.name());
+        String name = req.getParameter(UtilityData.FormAttributes.name.name());// name.name() - перебор с названием
         String surname = req.getParameter(UtilityData.FormAttributes.surname.name());
 
         List<User> searchResult = userService.nameSurnameSearch(name, surname);
