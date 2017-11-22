@@ -12,7 +12,8 @@ public class NameSurnameValidatorImpl implements Validator {
     }
 
     private boolean isValid (String string) {
-        Pattern pattern = Pattern.compile(UtilityData.INITIALS_RE);
+        Pattern pattern = Pattern.compile(UtilityData.INITIALS_RE);// зачем каждый раз компилировать один и тот же паттерн?
+        // экземпляры чем-то будут друг от друга отличаться?
         Matcher matcher = pattern.matcher(string);
         return matcher.matches();
     }

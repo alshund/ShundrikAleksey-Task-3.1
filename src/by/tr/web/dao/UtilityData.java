@@ -12,6 +12,6 @@ public class UtilityData {
     public static final int SURNAME_PARAMETER_INDEX = 2;
 
     public enum TableAttributes {
-        name, surname, phone_number, email
+        name, surname, phone_number, email// как объявляются поля в enum?
     }
 }

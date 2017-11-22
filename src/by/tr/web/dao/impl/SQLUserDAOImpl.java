@@ -10,7 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SQLUserDAOImpl implements UserDAO {
-    private Connection connection;
+    private Connection connection;// некорректно выносить данные поля в поля экземпляра класса
+    // в многопоточном приложении они станут у тебя разделяемыми ресурсами со всеми вытекающими
     private PreparedStatement preparedStatement;
     private ResultSet resultSet;
 
@@ -33,13 +34,14 @@ public class SQLUserDAOImpl implements UserDAO {
 
     private void openConnection() throws SQLException {
 
-        DriverManager.registerDriver(new com.mysql.jdbc.Driver ());
+        DriverManager.registerDriver(new com.mysql.jdbc.Driver ());// первое - ну где вы находите этот код, Class.forName() чем тебе не нравится
+        //второе - ты посчитал, сколько раз будет выполнять данный оператор, а зачем он создает новый драйвер при каждом вызове метода?
         connection = DriverManager.getConnection(UtilityData.URL, UtilityData.USER, UtilityData.PASS);
     }
 
     private void closeAll() throws SQLException {
 
-        resultSet.close();
+        resultSet.close();// если тут случится Exception - больше ничего и не закроется
         preparedStatement.close();
         connection.close();
     }

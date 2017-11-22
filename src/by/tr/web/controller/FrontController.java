@@ -15,7 +15,7 @@ public class FrontController extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        super.service(req, resp);
+        super.service(req, resp);// жутко нужный код...
     }
 
     @Override
@@ -27,13 +27,13 @@ public class FrontController extends HttpServlet {
             Command command = commandDirector.getCommand(commandName);
             command.execute(req, resp);
         } catch (ServiceSearchException e) {
-            e.printStackTrace();
+            e.printStackTrace();// правда? просто printStackTrace? а пользователю уйдет чистая белая страница???
         }
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        super.doPost(req, resp);
+        super.doPost(req, resp);// че, правда? doPost базового класса? чтож он такое интересное делает?
     }
 }
