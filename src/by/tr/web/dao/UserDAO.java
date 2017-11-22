@@ -7,5 +7,5 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface UserDAO {
-    List<User> nameSurnameSearch(String name, String surname) throws DAOSearchException, SQLException;
+    List<User> nameSurnameSearch(String name, String surname) throws DAOSearchException, SQLException;// шикарное название метода (это стеб)
 }
